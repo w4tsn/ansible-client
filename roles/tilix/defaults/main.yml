@@ -1,0 +1,6 @@
+---
+# defaults file for tilix
+
+tilix_packages:
+  - dnf: tilix
+  - dnf: tilix-nautilus

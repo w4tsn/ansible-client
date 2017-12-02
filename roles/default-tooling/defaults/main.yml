@@ -15,8 +15,6 @@ packages:
   - dnf: stow
 
   # Desktop utils
-  - dnf: tilix
-  - dnf: tilix-nautilus
   - dnf: remmina
   - dnf: gthumb
   - dnf: vlc
