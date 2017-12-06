@@ -2,21 +2,21 @@
 # tasks file for atom
 
 - name: Check atom is installed
-  dnf:
+  atom:
     name: atom
     state: present
   ignore_errors: true
   register: atom_installed
   tags:
     - atom
-    - dnf
+    - apt
     - packages
   become: true
 
 - name: Download atom
   get_url:
-    url: "{{ atom_url.rpm }}"
-    dest: "/tmp/atom.rpm"
+    url: "{{ atom_url.deb }}"
+    dest: "/tmp/atom.deb"
   register: atom_download
   tags:
     - atom
@@ -26,21 +26,29 @@
     - atom_installed|failed
 
 - name: Install atom
-  dnf:
-    name: "/tmp/atom.rpm"
+  apt:
+    deb: "/tmp/atom.deb"
     state: present
   tags:
     - atom
-    - dnf
+    - apt
     - packages
   become: true
+  ignore_errors: true
   when:
     - atom_installed|failed
     - atom_download|succeeded
 
+- name: Install atom dependencies (very hacky)
+  command: "apt-get install -f"
+  become: true
+  when:
+    - atom_installed|failed
+    - atom_downloaded|succeeded
+
 - name: Clean up
   file:
-    path: "/tmp/atom.rpm"
+    path: "/tmp/atom.deb"
     state: absent
   tags:
     - atom

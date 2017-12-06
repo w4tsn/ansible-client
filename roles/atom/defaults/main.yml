@@ -1,4 +1,6 @@
 ---
 # defaults file for atom
 
-atom_url: "https://atom.io/download/rpm"
+atom_url: 
+  rpm: "https://atom.io/download/rpm"
+  deb: "https://atom.io/download/deb"
