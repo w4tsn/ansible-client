@@ -1,0 +1,8 @@
+---
+
+- import_playbook: desktop.yml
+
+- hosts: gnome
+  roles:
+    - gnome-connect
+    - flathub

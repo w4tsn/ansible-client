@@ -1,0 +1,11 @@
+---
+- import_playbook: base.yml
+
+- hosts: desktop
+  roles:
+    - nautilus
+    - nextcloud-client
+    - riot
+    - gitkraken
+    - atom
+    - vscode

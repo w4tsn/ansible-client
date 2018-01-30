@@ -1,0 +1,8 @@
+---
+- hosts: clients
+  roles:
+    - sys-upgrade
+    - rpmfusion
+    - hardware
+    - default-tooling
+    - automated-updates
